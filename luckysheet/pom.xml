@@ -68,11 +68,11 @@
             <artifactId>luckysheet-mysql</artifactId>
             <version>${project.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.xc</groupId>-->
-<!--            <artifactId>luckysheet-postgre</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.xc</groupId>-->
+        <!--            <artifactId>luckysheet-postgre</artifactId>-->
+        <!--            <version>${project.version}</version>-->
+        <!--        </dependency>-->
 
         <!-- websocket start -->
         <dependency>
@@ -113,14 +113,14 @@
 
         <!--&lt;!&ndash; mongodb driver start &ndash;&gt;-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-mongodb</artifactId>-->
-            <!--<version>1.9.0.RELEASE</version>&lt;!&ndash;$NO-MVN-MAN-VER$&ndash;&gt;-->
+        <!--<groupId>org.springframework.data</groupId>-->
+        <!--<artifactId>spring-data-mongodb</artifactId>-->
+        <!--<version>1.9.0.RELEASE</version>&lt;!&ndash;$NO-MVN-MAN-VER$&ndash;&gt;-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.mongodb</groupId>-->
-            <!--<artifactId>mongo-java-driver</artifactId>-->
-            <!--<version>3.6.0</version>-->
+        <!--<groupId>org.mongodb</groupId>-->
+        <!--<artifactId>mongo-java-driver</artifactId>-->
+        <!--<version>3.6.0</version>-->
         <!--</dependency>-->
         <!--&lt;!&ndash; mongodb driver start &ndash;&gt;-->
 
@@ -155,17 +155,20 @@
             <artifactId>jasypt-spring-boot-starter</artifactId>
             <version>2.1.1</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <profiles>
-        <profile>
-            <id>postgres</id>
-            <properties>
-                <profiles.active>postgres</profiles.active>
-            </properties>
-        </profile>
+        <!--        <profile>-->
+        <!--            <id>postgres</id>-->
+        <!--            <properties>-->
+        <!--                <profiles.active>postgres</profiles.active>-->
+        <!--            </properties>-->
+        <!--        </profile>-->
         <profile>
             <id>mysql</id>
             <properties>
@@ -176,7 +179,7 @@
 
 
     <build>
-        <finalName>web-lockysheet-${profiles.active}</finalName>
+        <!--        <finalName>web-lockysheet-${profiles.active}</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -185,13 +188,13 @@
         </plugins>
         <resources>
             <resource>
-                <filtering>true</filtering>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>application.yml</include>
-                    <include>application-${profiles.active}.yml</include>
-                    <include>*.xml</include>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
                 </includes>
+                <filtering>false</filtering>
             </resource>
         </resources>
     </build>
